@@ -13,37 +13,33 @@ header .logo {
 	float: left;
 	border: 1px solid green;
 	text-align: center;
-	line-height: 100px;
 }
 header .banner {
 	height: 100px;
-	width: 69.61%;
+	width: 69%;
 	float: left;
 	border: 1px solid green;
 	text-align: center;
-	line-height: 100px;
 }
 header .menu {
 	clear: both;
 	height: 48px;
 	border: 1px solid green;
 	text-align: center;
-	line-height: 48px;
 }
 #main {
 	height: 800px;
 }
 .main1-left {
-	width: 49.5%;
+	width: 46.5%;
 	height: 200px;
 	border: 1px solid green;
 	float: left;
 	text-align: center;
-	line-height: 200px;
 }
 .main1-right {
 	float: left;
-	width: 50.11%;
+	width: 53%;
 	border: 1px solid green;
 	height: 200px;
 }
@@ -51,11 +47,10 @@ header .menu {
 	border: 1px solid green;
 	height: 65px;
 	text-align: center;
-	line-height: 65px;
 }
 .main2-left{
 	float: left;
-	width: 70%;
+	width: 65%;
 	border: 1px solid black;
 	height: 600px;
 }
@@ -63,11 +58,10 @@ header .menu {
 	border: 1px solid black;
 	height: 148px;
 	text-align: center;
-	line-height: 70px;
 }
 .main2-right{
 	float: left;
-	width: 29.6%;
+	width: 34.3%;
 	border: 1px solid green;
 	height: 600px;
 }
@@ -75,25 +69,22 @@ header .menu {
 	height: 198px;
 	text-align: center;
 	border: 1px solid green;
-	line-height: 100px;
 }
 
 #footer{
 	height: 80px;
 }
 .footer1-left{
-	width: 25%;
+	width: 28.8%;
 	height: 76px;
 	float: left;
 	border: 1px solid black;
 	text-align: center;
-	line-height: 70px;
 }
 .footer2-right{
-	width: 74.6%;
+	width: 70.6%;
 	height: 76px;
 	float: right;
 	border: 1px solid black;
 	text-align: center;
-	line-height: 70px;
 }

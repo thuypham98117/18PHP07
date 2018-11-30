@@ -1,0 +1,44 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#nav-list{
+	margin: 0 auto;
+	width: 80%;
+	padding: 10px;
+}
+ul{
+	list-style-type: none;
+}
+ul li{
+	width:250px ;
+	background: blue ;
+	border: 1px solid black;
+	float: left;
+	line-height: 50px;
+	text-align: center;
+	
+}
+ul li a{
+	color:white;
+	text-decoration: none;
+	font-weight: bold;
+}
+ul ul{
+	display: none;
+	top: 100%;
+}
+ul ul li{
+	float: none;
+}
+ul li:hover >ul{
+	display: block;
+}
+#nav-list > ul::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+ul li a:hover{
+	color: red;
+}

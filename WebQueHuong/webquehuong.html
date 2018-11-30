@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Trang chủ</title>
+    <link rel="stylesheet" href="style.css">
+		<script>
+			var products=Array();
+			var prices=Array();
+			function Sum(){   
+				var sum = 0;   
+				for(var p in prices)    
+					sum+=parseInt(prices[p]);   
+				return sum;  
+			}
+			function allowDrop(ev){
+				ev.preventDefault();
+			}
+			function drag(ev){
+				ev.dataTransfer.setData("Text",ev.target.id);
+			}
+			function drop(ev){
+				ev.preventDefault();   
+				var data=ev.dataTransfer.getData("Text");   
+				var newNode = document.getElementById(data).cloneNode(true);   
+				newNode.onclick = function(){     
+								var data = this.id;     
+								var productname = data+"_productname";     
+								var productnameNode = document.getElementById(productname);     
+								var id = products.indexOf(productnameNode);     
+								prices.splice(id,1);     
+								products.splice(id,1);     
+								document.getElementById("tongtien").innerHTML = "$=" + Sum();     
+								this.parentNode.removeChild(this);
+								}
+				var productname = data+"_productname";   
+				var productnameNode = document.getElementById(productname);   
+				var price = data+"_price";   
+				var priceNode = document.getElementById(price);   
+				var x = priceNode.innerHTML.replace(",","");   
+				x = x.replace("đ","");   
+				var id = products.indexOf(productnameNode); 
+				if(id==-1){    
+					products.push(productnameNode);    
+					prices.push(x);           
+					ev.target.appendChild(newNode);   
+				}   
+				else {    
+					var old = parseInt(prices[p]);    
+					prices[id] = old + parseInt(x);   
+				}   
+				document.getElementById("tongtien").innerHTML = "$=" + Sum(); 	
+			}	
+			
+		function moveElement(elementID,final_x, final_y, interval){
+  			var elem = document.getElementById(elementID);
+  			if(elem.movement) clearTimeout(elem.movement);
+ 			// Xác định vị trí
+			var xpos = parseInt(elem.style.left);
+			var ypos = parseInt(elem.style.top);
+
+			// Sau khi dịch chuyển tới vị trí thì dừng
+			if(xpos == final_x && ypos == final_y) return true;
+
+			// Tính vị trí dịch chuyển sau mỗi thời gian dừng
+			if(xpos < final_x){
+			   var dist = Math.ceil((final_x - xpos)/10);
+			   xpos = xpos + dist;
+			}
+			if(xpos > final_x){
+			   var dist = Math.ceil((xpos - final_x)/10);
+			   xpos = xpos - dist;
+			}
+			if(ypos < final_y){
+			   var dist = Math.ceil((final_y - ypos)/10);
+			   ypos = ypos + dist;
+			}
+			if(ypos > final_y){
+			   var dist = Math.ceil((ypos - fina_y)/10);
+			   ypos = ypos - dist;
+			}
+
+			// Di chuyển phần tử
+			elem.style.left = xpos + "px";
+			elem.style.top = ypos + "px";
+
+			// Gọi lại hàm dịch chuyển sau khi dịch được 1 px
+			var repeat = "moveElement('" + elementID + "'," + final_x + ", " + final_y + ", " + interval + ")";
+			elem.movement = setTimeout(repeat,interval);
+		}
+		
+		function previous(){
+		  if(move <0) move += box_width;
+		  moveElement('slider',move, 0, 10);
+		}
+		function next(){
+		 move = (move <= endpos)? 0: (move-box_width);
+		 moveElement('slider',move, 0, 10);
+		}
+		function slider(){
+		  if(!document.getElementById) return false;
+		  var slider = document.getElementById('slider');
+		  var wrap_slider = document.getElementById('wrap-slider');
+		 
+		  // Định kiểu cho slider nếu chưa được thiết lập
+		  if(!slider.style.position) slider.style.position ="absolute";
+		  if(!slider.style.left) slider.style.left ="0px";
+		  if(!slider.style.top) slider.style.top = "0px";
+
+		  // Thiết lập các thông số cho slider
+		  var box_arr =slider.childNodes;
+		  var box_quantity =0;
+		  for(var i=0; i<box_arr.length; i++){
+		    if(box_arr[i].className == 'slide-box'){
+		     box_quantity++;
+		     box_width =box_arr[i].offsetWidth;
+		     box_height =box_arr[i].offsetHeight;
+		    }
+		  }
+
+		  wrap_slider.style.height =box_height+"px";
+		  wrap_slider.style.width =box_width+"px";
+		  slider.style.width = (box_width*box_quantity)+"px";
+		  move=0; endpos = -(box_width*3);
+
+		  // Tự động chạy slider
+		  var idSet =setInterval('next()',5000);
+		 
+		  // next_slide , prev_slide
+		  var next_slide = document.getElementById("next-slide");
+		  var prev_slide = document.getElementById("prev-slide");
+
+		  next_slide.onclick = function(){
+		    next(); clearInterval(idSet);
+		    idSet =setInterval('next()',5000);
+		  }
+		  prev_slide.onclick = function(){
+		    previous(); clearInterval(idSet);
+		    idSet =setInterval('next()',5000);
+		  }
+		}
+		window.onload = function(){
+  			slider();
+		}// end onload
+	</script>
+	</head>
+	<body>
+	<div id="container">
+		<header>
+			<img src="images/banner.jpg" width=100% height=350>
+			<div class="menu">
+				<ul>
+					<li><a href="#">Trang chủ</a>
+						<ul>
+							<li><a href="#">Kinh tế</a></li>
+							<li><a href="#">Chính trị</a></li>
+							<li><a href="#">Văn hóa-Xã hội</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Kiều bào</a>
+						<ul>
+							<li><a href="#">Tin cộng đồng</a></li>
+							<li><a href="#">Đời sống</a></li>
+							<li><a href="#">Gương mặt</a></li>
+						</ul>
+					</li>  
+					<li><a href="#">Đất nước con người</a>
+						<ul>
+							<li><a href="#">Đất nước Việt Nam</a></li>
+							<li><a href="#">Con người Việt Nam</a></li>
+							<li><a href="#">Việt Nam sở lượt</a></li>
+						</ul>
+					</li>  
+					<li><a href="#">Bản sắc văn hóa</a></li>  
+					<li><a href="#">VH-NT</a>
+						<ul>
+							<li><a href="#">Giai thoại Việt Nam</a></li>
+							<li><a href="#">Ca dao tục ngữ</a></li>
+							<li><a href="#">Tản văn</a></li>
+						</ul>
+					</li>  
+					<li><a href="#">Học tiếng Việt</a></li>  				
+				</ul>				
+			</div>
+		</header>
+		<article>
+			<div id="main">
+				<div id="wrap-slider">
+					<div id="slider">
+						<img class="slide-box" src="images/1.jpg" />
+						<img class="slide-box" src="images/2.jpg" />
+						<img class="slide-box" src="images/3.jpg" />
+						<img class="slide-box" src="images/4.jpg" />
+					</div>
+				</div>
+				<span id="prev-slide">Previous</span><span id="next-slide">Next</span>
+			</div>
+			<div id="Content">
+				<div class="jpg1">
+					<img src="images/5.jpg"/>
+					<p>
+					<b>DIỄN ĐÀN TRÍ THỨC TRẺ VIỆT NAM TOÀN CẦU LẦN THỨ I</b><br><br>
+					Từ ngày 28 - 29/11, Diễn đàn Trí thức trẻ Việt Nam toàn cầu lần thứ I (VYI Forum 2018) với chủ đề “Phát huy sức mạnh trí thức trẻ Việt Nam trong kỷ nguyên 4.0” đã được tổ chức thành công tại thành phố Đà Nẵng,...
+					<a href="http://quehuongonline.vn/nguoi-viet-o-nuoc-ngoai/dien-dan-tri-thuc-tre-viet-nam-toan-cau-lan-thu-i-20181129161008802.htm" target="_blank">Xem tiếp>>></a>				
+					</p>
+				</div>
+				<div class="jpg2">
+					<img src="images/6.jpg"/>
+					<p><br>
+					<b>DẤU XƯA VƯƠNG PHỦ</b><br><br>
+					“Dấu xưa xe ngựa hồn thu thảo…”. Câu thơ buồn miên man ấy của Bà huyện Thanh Quan cứ vẳng lên mỗi khi tôi chạm mắt vào những cánh cổng của những phủ đệ xứ Huế. Huế là miền phủ đệ, nhưng tiếc là bây giờ, có những phủ đệ chỉ còn mỗi cánh cổng hư hao…
+					<a href="http://quehuongonline.vn/dat-nuoc-con-nguoi/dau-xua-vuong-phu-20181126144218935.htm " target="_blank">Xem tiếp>>></a>
+					</p>
+				</div>
+				<div class="png1">
+				<img src="images/7.png"/>
+					<p><br><br>
+					<b>MÓN CÁ "HÓA THẠCH" THƠM PHỨC</b><br><br>
+					Trong ẩm thực, người ta nói rằng món ăn khó nuốt nhất trên thế giới là món ăn quên cho muối, thật khó để tưởng tượng ẩm thực khi mất đi thứ gia vị đắt giá này sẽ ra sao...
+					<a href=http://quehuongonline.vn/ban-sac-van-hoa/mon-ca-hoa-thach-thom-phuc-20181129100047071.htm>Xem tiếp>>></a>
+					</p>
+				</div>
+			</div>
+		</article>
+		<footer id="footer">
+			<div class="fLeft">
+				<h4>Tạp chí quê hương trên Internet</h4>
+				<p>Tổng biên tập: Phạm Thị Thúy</p>
+				<p>© Ghi rõ nguồn QueHuongOnline.vn</p>
+			</div>
+			<div class="fRight">
+				<p>Toà soạn: Số 41 Lê Duẩn quận Hải Châu, Đà Nẵng, Việt Nam </p>
+				<p>Tel: (84-4) 39 333 923 / 39 333 924  |  Fax: (84-4) 38 259 211</p>
+				<p>E-mail: thuypham981172gmail.com</p>
+			</div>
+		</footer>
+	</div>
+	</body>
+</html>
