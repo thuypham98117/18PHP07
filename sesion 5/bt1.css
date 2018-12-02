@@ -12,30 +12,35 @@
 }
 #f-right{
 	float: right;
-	width: 50%;
+	width: 40%;
 }
 #fieldset1{
-	height: 200px;
+	height: 250px;
+	line-height: 20px;
 }
 #fieldset2{
-	height: 300px;
-}
-div{
-	padding: 10px;
-}
-span{
-	color: red;
-}
-h2{
-	margin: 10px;
+	height: 350px;
+	line-height: 20px;
 }
 .f-name{
 	float: left;
 }
+div{
+	padding: 10px;
+}
+h2{
+	padding: 20px;
+}
+span{
+	color: red;
+}
+input{
+	height: 25px;
+}
 @media screen and (max-width: 1280px){
 	#wrapper{
 		margin: 0 auto;
-		width: 100%;
+		width: 80%;
 }
 	#f-left{
 		width: 40%;
@@ -54,24 +59,29 @@ h2{
 	#f-left{
 		width: 35%;
 		float: left;
+		margin: 1%;
+		line-height: 5px;
 }
 	#f-right{
 		width: 50%;
 		float:left;
 	}
+	#fieldset1{
+		margin: 5px;
+	}
 }
 @media screen and (max-width: 768px){
 	#wrapper{
 		margin: 0 auto;
-		width: 100%;
+		width: 90%;
 }
 	#f-left{
 		margin: 0 auto
-		width: 50%;
+		width: 45%;
 		float: left;
 }
 	#f-right{
-		width: 60%;
-		float: left;
+		width: 47%;
+		float: 	right;
 }
 }
