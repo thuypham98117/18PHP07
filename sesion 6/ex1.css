@@ -1,0 +1,26 @@
+@font-face{
+	font-family: myFont1;
+	src:url('Font/Acme-Regular.ttf');
+}
+@font-face{
+	font-family: myFont2;
+	src:url('Font/Amarante-Regular.ttf');
+}
+.p1{
+	font-weight: bold;
+	font-family: myFont1;
+	font-size: 30px;
+}
+.p2{
+	font-weight: bold;
+	font-family: myFont2;
+	font-size: 20px;
+}
+#demo{
+	width: 600px;
+	height: 400px;
+	border: 1px solid black;
+}
+#demo img{
+	vertical-align: top;
+}
