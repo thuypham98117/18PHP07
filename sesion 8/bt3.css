@@ -1,0 +1,40 @@
+*{
+	margin: 0 auto;
+	padding: 0;
+}
+body{
+	width: 50%;
+	font-family: arial;
+	font-size: 16px;
+	color: #000;
+}
+#khung{
+	margin: 0px;
+	padding: 30px 15px 15px 15px;
+	border: 2px solid #333;
+	width: 285px;
+}
+#Result{
+	padding: 10px;
+	margin: 0px 0px 15px 0px;
+	text-align: right;
+	width: 265px;
+	outline: none;
+	border: 1px solid #333;
+}
+.btn{
+	margin: 0px 0px 15px 15px;
+	padding: 10px 10px 10px 10px;
+	float: left;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: #666;
+	color: #fff;
+	width: 40px;
+}
+.btn.first{
+	margin-left: 0px;
+}
+.btn:hover{
+	background-color: #333;
+}
